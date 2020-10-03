@@ -1,0 +1,13 @@
+title: Hotmess Lighthouses
+email: liam@cloudcannon.com
+description: >-
+  Hotmess lighthouses site
+
+baseurl: ""
+url: ""
+
+twitter_username: liambigelow
+github_username:  bglw
+
+theme: lighthouses-theme
+
