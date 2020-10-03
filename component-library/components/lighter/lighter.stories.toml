@@ -1,0 +1,14 @@
+[defaults]
+big = false
+lit = false
+title = "Hello World"
+
+[standard]
+
+[big]
+big = true
+
+[lit]
+lit = true
+
+
