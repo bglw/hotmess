@@ -1,0 +1,17 @@
+{
+  "name": "bglw-hotmess-components",
+  "private": true,
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "COMPONENT_LIB='../component-library' jekyll-extract"
+  },
+  "author": "@LiamBigelow",
+  "license": "MIT",
+  "devDependencies": {
+    "@bookshop/jekyll-extract": "^1.4.1",
+    "webpack": "^4.44.1"
+  }
+}
