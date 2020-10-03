@@ -11,3 +11,8 @@ github_username:  bglw
 
 theme: lighthouses-theme
 
+collections:
+  lighthouses:
+    name: Lighthouses
+    output: true
+    permalink: /:slug/
