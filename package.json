@@ -6,13 +6,14 @@
   "main": "index.js",
   "scripts": {
     "install:all": "npm-run-all install:lh-site install:lh-theme install:component-lib",
-    "start": "run-p start:lh-site start:lh-theme start:component-lib",
+    "start": "run-p start:lh-site start:lh-theme start:svelte start:component-lib",
     "start:pre": "run-p start:lh-theme",
     "gen": "cd component-library && npm run gen",
     "install:lh-site": "cd lighthouses-site && bundle install",
     "start:lh-site": "cd lighthouses-site && bundle exec jekyll serve",
     "install:lh-theme": "cd lighthouses-theme && npm install",
     "start:lh-theme": "cd lighthouses-theme && npm run watch",
+    "start:svelte": "cd lighthouses-theme && npm run svelte",
     "install:component-lib": "cd component-library && npm install",
     "start:component-lib": "cd component-library && npm run start"
   },

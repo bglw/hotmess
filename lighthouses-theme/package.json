@@ -6,12 +6,16 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "COMPONENT_LIB='../component-library' jekyll-extract"
+    "watch": "COMPONENT_LIB='../component-library' jekyll-extract",
+    "svelte": "webpack --watch"
   },
   "author": "@LiamBigelow",
   "license": "MIT",
   "devDependencies": {
-    "@bookshop/jekyll-extract": "^1.4.1",
-    "webpack": "^4.44.1"
+    "@bookshop/jekyll-extract": "^1.4.3",
+    "svelte": "^3.29.0",
+    "svelte-loader": "^2.13.6",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
   }
 }
