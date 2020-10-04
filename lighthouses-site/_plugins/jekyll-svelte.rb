@@ -33,6 +33,10 @@ module JekyllSvelte
       @tag_name = tag_name
     end
 
+    def blank?
+      false
+    end
+
     def parse_params(context)
       params = {}
       @params.scan(VALID_SYNTAX) do |key, d_quoted, s_quoted, variable|
@@ -100,7 +104,7 @@ module JekyllSvelte
       file = render_variable(context) || @file
       validate_file_name(file)
 
-      svelte_data = parse_params(context).to_json
+      svelte_data = @params ? parse_params(context).to_json : "{}"
       endpoint = Digest::MD5.hexdigest(svelte_data)
 
       <<~MSG
