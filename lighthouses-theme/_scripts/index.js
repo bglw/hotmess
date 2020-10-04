@@ -1,33 +1,70 @@
 import BOOKSHOP_COMPONENTS from "../_bookshop/**/*.svelte";
 import THEME_COMPONENTS from "./**/*.svelte";
 
-let instances = [];
-let usableApps = {};
+/**
+ * Convert a component path (like in bookshop) to a component name.
+ * Removes duplicate file/folder name, stops at components folder or dotpath.
+ * @param  {String} filepath Raw filepath that was imported
+ * @return {String}          Component name, as per bookshop conventions
+ */
+const rewriteSvelteComponent = (filepath) => {
+  let fp = filepath.toLowerCase().split('/').reverse();
+  let componentName = [fp[0].replace(/\..*$/, '')];
+  let startAt = fp[1] === componentName[0] ? 2 : 1;
+  for (let i = startAt; i < fp.length; i++) {
+    if (fp[i] === 'components') break;
+    if (/\./.test(fp[i])) break;
+    componentName.unshift(fp[i]);
+  }
+  return componentName.join('/');
+};
 
-if (typeof BOOKSHOP_COMPONENTS !== 'undefined') {
-	for (let component of BOOKSHOP_COMPONENTS) {
-		usableApps[component.default.name.toLowerCase()] = component;
+/**
+ * Turn a raw import-glob-keyed object into a map of components
+ * @param  {Object} importedObj Output from import-glob-keyed
+ * @param  {Object} appObj      Object to insert components into
+ */
+const mapSvelteFiles = (importedObj, appObj) => {
+	for (let [file, component] of Object.entries(importedObj)) {
+		file = rewriteSvelteComponent(file);
+		appObj[file] = component;
 	}
 }
-if (typeof THEME_COMPONENTS !== 'undefined') {
-	for (let component of THEME_COMPONENTS) {
-		usableApps[component.default.name.toLowerCase()] = component;
+
+/**
+ * Look for svelte tags on the page, and try render an app into them.
+ * @param  {Array}  targets Array of DOM nodes that have the data-svelte-component attr
+ * @param  {Object} apps    All Svelte components available
+ */
+const registerSvelteApps = (targets, apps) => {
+	let instances = [];
+
+	for (let target of targets) {
+		let componentName = target.dataset.svelteComponent;
+		let componentData = target.dataset.svelteEndpoint;
+
+		let discoveredApp = apps[componentName];
+		if (discoveredApp) {
+			let props = window[componentData];
+
+			instances.push(new discoveredApp.default({target, props, hydrate: true}));
+		} else {
+			console.warn(`WARN: Component "${componentName}" not found`)
+		}
 	}
+
+	window.COMPONENT_INSTANCES = instances;
 }
 
-let renderTargets = document.querySelectorAll("[data-svelte-component]");
-for (let target of renderTargets) {
-	let componentName = target.dataset["svelteComponent"];
-	let componentData = target.dataset["svelteEndpoint"];
 
-	let discoveredApp = usableApps[componentName];
-	if (discoveredApp) {
-		let props = window[componentData];
+(function() {
+	let usableApps = {};
+	if (typeof BOOKSHOP_COMPONENTS !== 'undefined') mapSvelteFiles(BOOKSHOP_COMPONENTS, usableApps);
+	if (typeof THEME_COMPONENTS !== 'undefined') mapSvelteFiles(THEME_COMPONENTS, usableApps);
 
-		instances.push(new discoveredApp.default({target, props, hydrate: true}));
-	} else {
-		console.warn(`WARN: Component "${componentName}" not found`)
-	}
-}
+	let renderTargets = document.querySelectorAll("[data-svelte-component]");
+	registerSvelteApps(renderTargets, usableApps);
+}());
 
-window.COMPONENT_INSTANCES = instances;
+
+

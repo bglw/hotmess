@@ -17,7 +17,7 @@ module.exports = {
         rules: [{
             test: /\.js$/,
             exclude: /node_modules/,
-            use: ['import-glob']
+            use: ['import-glob-keyed']
         }, {
             test: /\.svelte$/,
             exclude: /node_modules/,
