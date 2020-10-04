@@ -8,9 +8,9 @@ import THEME_COMPONENTS from "./**/*.svelte";
  * @return {String}          Component name, as per bookshop conventions
  */
 const rewriteSvelteComponent = (filepath) => {
-  let fp = filepath.toLowerCase().split('/').reverse();
-  let componentName = [fp[0].replace(/\..*$/, '')];
-  let startAt = fp[1] === componentName[0] ? 2 : 1;
+  const fp = filepath.toLowerCase().split('/').reverse();
+  const componentName = [fp[0].replace(/\..*$/, '')];
+  const startAt = fp[1] === componentName[0] ? 2 : 1;
   for (let i = startAt; i < fp.length; i++) {
     if (fp[i] === 'components') break;
     if (/\./.test(fp[i])) break;
@@ -37,15 +37,15 @@ const mapSvelteFiles = (importedObj, appObj) => {
  * @param  {Object} apps    All Svelte components available
  */
 const registerSvelteApps = (targets, apps) => {
-	let instances = [];
+	const instances = [];
 
-	for (let target of targets) {
-		let componentName = target.dataset.svelteComponent;
-		let componentData = target.dataset.svelteEndpoint;
+	for (const target of targets) {
+		const componentName = target.dataset.svelteComponent;
+		const componentData = target.dataset.svelteEndpoint;
 
-		let discoveredApp = apps[componentName];
+		const discoveredApp = apps[componentName];
 		if (discoveredApp) {
-			let props = window[componentData];
+			const props = window[componentData];
 
 			instances.push(new discoveredApp.default({target, props, hydrate: true}));
 		} else {
@@ -58,13 +58,12 @@ const registerSvelteApps = (targets, apps) => {
 
 
 (function() {
-	let usableApps = {};
+	const usableApps = {};
 	if (typeof BOOKSHOP_COMPONENTS !== 'undefined') mapSvelteFiles(BOOKSHOP_COMPONENTS, usableApps);
 	if (typeof THEME_COMPONENTS !== 'undefined') mapSvelteFiles(THEME_COMPONENTS, usableApps);
 
-	let renderTargets = document.querySelectorAll("[data-svelte-component]");
+	const renderTargets = document.querySelectorAll("[data-svelte-component]");
 	registerSvelteApps(renderTargets, usableApps);
 }());
-
 
 
