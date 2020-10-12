@@ -8,6 +8,7 @@ url: ""
 
 plugins:
   - jekyll-bookshop
+  - jekyll-stretcher
 
 twitter_username: liambigelow
 github_username:  bglw
