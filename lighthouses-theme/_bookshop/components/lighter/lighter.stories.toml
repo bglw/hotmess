@@ -3,7 +3,7 @@ big = false
 lit = false # Whether the lighthouse is lit up or not
 title = "Hello World" # This is a cool title huh
 
-[defaults.beans--repeat]
+[defaults.tht--select]
 rice = "tasty" # Rice
 something = "else"
 
