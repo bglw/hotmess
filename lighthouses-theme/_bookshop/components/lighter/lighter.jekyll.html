@@ -1,0 +1,9 @@
+{% svelte lighter bind=include %}
+<div class="{{ 'c-lighter' | addmods: big:include.big  | addstates: lit:include.lit }}">
+
+    <div class="c-lighter__title">
+    	{{ include.title }}
+    </div>
+
+</div>
+{% endsvelte %}

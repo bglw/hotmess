@@ -1,0 +1,23 @@
+.c-lighter { $c: &;
+	padding: 1rem;
+	border: 1px dashed #ccc;
+
+	&.is-svelte {
+		cursor: pointer;
+	}
+
+    &.is-lit {
+        background-color: yellow;
+    }
+
+
+    &--big {
+        padding: 3rem;
+    }
+
+
+    &__title {
+    	font-family: monospace;
+    }
+
+}
