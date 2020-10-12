@@ -7,7 +7,7 @@ baseurl: ""
 url: ""
 
 plugins:
-  jekyll-bookshop
+  - jekyll-bookshop
 
 twitter_username: liambigelow
 github_username:  bglw
