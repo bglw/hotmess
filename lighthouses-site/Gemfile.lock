@@ -17,6 +17,7 @@ GEM
   specs:
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    citrus (3.0.2)
     colorator (1.1.0)
     concurrent-ruby (1.1.7)
     em-websocket (0.5.2)
@@ -73,6 +74,8 @@ GEM
       ffi (~> 1.9)
     terminal-table (1.8.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
+    toml-rb (2.0.1)
+      citrus (~> 3.0, > 3.0)
     unicode-display_width (1.7.0)
 
 PLATFORMS
@@ -85,6 +88,7 @@ DEPENDENCIES
   jekyll-stretcher (~> 0.1)
   jekyll-watch!
   lighthouses-theme!
+  toml-rb (~> 2.0)
 
 BUNDLED WITH
    2.1.4

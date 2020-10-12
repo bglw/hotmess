@@ -1,7 +1,11 @@
 [defaults]
 big = false
-lit = false
-title = "Hello World"
+lit = false # Whether the lighthouse is lit up or not
+title = "Hello World" # This is a cool title huh
+
+[defaults.beans--repeat]
+rice = "tasty" # Rice
+something = "else"
 
 [standard]
 
@@ -9,6 +13,6 @@ title = "Hello World"
 big = true
 
 [lit]
-lit = true
+lit = true # Whether the lighthouse is lit up or not
 
 
