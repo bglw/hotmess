@@ -1,0 +1,26 @@
+[defaults]
+hot = false
+spicy = false
+
+eaten = false
+
+text = "Hello World"
+object = "{key: [{name: 'Hello'}, {name: 'World'}]}"
+
+
+[standard]
+
+[hot]
+hot = true
+
+
+[spicy]
+spicy = true
+
+
+
+
+[eaten]
+eaten = true
+
+
