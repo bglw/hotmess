@@ -6,6 +6,9 @@ description: >-
 baseurl: ""
 url: ""
 
+plugins:
+  jekyll-bookshop
+
 twitter_username: liambigelow
 github_username:  bglw
 
