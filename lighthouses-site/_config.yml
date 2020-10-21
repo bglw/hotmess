@@ -22,4 +22,5 @@ collections:
     permalink: /:slug/
   
 _comments:
-  title: "hi"
+  title: >-
+    <a href="cloudcannon:status">STATUS</a>
