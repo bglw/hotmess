@@ -20,3 +20,8 @@ collections:
     name: Lighthouses
     output: true
     permalink: /:slug/
+    
+    
+_comments:
+  title: >-
+    <a href="cloudcannon:status">
